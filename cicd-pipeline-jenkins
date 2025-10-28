@@ -1,0 +1,26 @@
+Step 1: Check and Set Java Path
+Run this command in your Linux terminal:
+find / -type f -name java
+
+🔹 Step 2: Install Maven
+sudo apt update
+sudo apt install maven -y
+java -version
+mvn -version
+
+🔹 Step 3: Configure Jenkins Tools
+
+Open Jenkins → Manage Jenkins → Global Tool Configuration
+Scroll to JDK section:
+Uncheck “Install automatically”
+Name: Java17
+JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+
+Scroll to Maven section:
+Check “Install automatically”
+Name: Maven
+
+Scroll to Git section:
+Check “Install automatically”
+Click Save
+
