@@ -1,0 +1,19 @@
+
+STEP 1 Download nginx official image and then containerized your web application in it.
+1.docker images 
+2.docker rmi mysql nginx ubuntu
+3.docker ps -a
+4.docker pull nginx
+5.docker images
+
+STEP 2 Run the container from nginx image
+1.docker run --name webserver1 nginx
+2.(another terminal) docker ps -a
+3.In previous terminal: ctrl+C ie; exit from container
+  In another terminal
+  docker ps -a
+4.docker container rm 100
+5.(In terminal 1):
+  docker run -it -p 3031:80 --name server1 nginx:latest bash
+  (In Another Terminal):
+   docker ps -a
