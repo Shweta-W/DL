@@ -1,0 +1,22 @@
+1. docker info: Give details about docker
+2. systemctl status docker: To Check docker engine is active or not
+   systemctl start docker: To start the docker engine
+   systemctl stop docker : To stop the docker engine
+3. docker login
+4. docker container run ubuntu cat /etc/os-release
+   docker run, It helps you to run a container on top of your docker engine, but the ingredients that
+   it needs is image name. 
+5. docker images : Lists all images 
+6. docker container ls: To List Container
+7. docker container ls -a: to check container have exited or not
+8. docker run -it ubuntu bash: u can run a ubuntu container
+9. docker pull mysql: This command is used to pull images from the docker repository(hub.docker.com)
+   docker container run nginx
+10. docker ps : This command lists the running containers on my system
+11. docker rm 191: To delete the container, #docker rm <container-name/container-id>
+12. docker rmi <image-name/image-id>: To delete the image
+13. docker start <container-id> : Start the stop container
+    docker stop <container-id> : Stop the running container
+    docker pause <container-id> : Pause the processes in running container
+    docker kill <container id> : Kill the container.
+
