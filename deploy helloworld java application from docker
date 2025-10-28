@@ -1,0 +1,78 @@
+Step 1: Create Project Folder
+mkdir java-docker-hello
+cd java-docker-hello
+
+Step 2: Create the Java Program
+nano HelloWorld.java
+Paste this code and save it (Ctrl + O → Enter → Ctrl + X):
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World from Docker!");
+    }
+}
+
+Step 3: Create the Dockerfile
+nano Dockerfile
+Paste the following content:  .....
+
+# Step 1: Use an official OpenJDK base image
+FROM openjdk:17-jdk-slim
+
+# Step 2: Set working directory inside container
+WORKDIR /app
+
+# Step 3: Copy Java source code into container
+COPY HelloWorld.java /app
+
+# Step 4: Compile the Java code
+RUN javac HelloWorld.java
+
+# Step 5: Run the compiled class
+CMD ["java", "HelloWorld"]
+
+....
+Save and exit.
+
+Step 4: Build the Docker Image
+docker build -t hello-java .
+Output (example):
+Successfully built 2f3b6f7c1234
+Successfully tagged hello-java:latest
+
+Step 5: Run the Docker Container
+docker run --rm hello-java
+Output:
+Hello, World from Docker!
+
+
+Your Java app is successfully running inside Docker.
+
+Step 6: Log in to Docker Hub
+docker login
+Enter your Docker Hub username and password (or access token).
+
+Step 7: Tag Your Image for Docker Hub
+docker tag hello-java <your-dockerhub-username>/hello-java:latest
+Example:
+docker tag hello-java shweta01/hello-java:latest
+
+Step 8: Push Image to Docker Hub
+docker push <your-dockerhub-username>/hello-java:latest
+Example:
+docker push shweta01/hello-java:latest
+
+Step 9: Verify Your Image on Docker Hub
+Go to:
+https://hub.docker.com/repository/docker/<your-dockerhub-username>/hello-java
+Example:
+https://hub.docker.com/repository/docker/shweta01/hello-java
+
+Step 10: Pull & Run From Anywhere
+From any system with Docker installed:
+docker run --rm <your-dockerhub-username>/hello-java:latest
+Example:
+docker run --rm shweta01/hello-java:latest
+
+Output:
+Hello, World from Docker!
