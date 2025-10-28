@@ -1,0 +1,64 @@
+Step 1: Create a Project Directory
+mkdir java-docker-addition
+cd java-docker-addition
+
+Step 2: Create the Java Program
+nano Addition.java
+Paste this code:
+.....
+import java.util.Scanner;
+
+public class Addition {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        int num1 = sc.nextInt();
+
+        System.out.print("Enter second number: ");
+        int num2 = sc.nextInt();
+
+        int sum = num1 + num2;
+
+        System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum);
+        sc.close();
+    }
+}
+
+....
+
+Step 3: Create the Dockerfile
+nano Dockerfile
+Paste the following:
+....
+# Step 1: Use official OpenJDK base image
+FROM openjdk:17-jdk-slim
+
+# Step 2: Set the working directory inside the container
+WORKDIR /app
+
+# Step 3: Copy the Java file into the container
+COPY Addition.java /app
+
+# Step 4: Compile the Java program
+RUN javac Addition.java
+
+# Step 5: Run the compiled Java program
+CMD ["java", "Addition"]
+....
+
+Step 4: Build the Docker Image
+Run the following command in the same directory:
+docker build -t addition-java .
+
+Step 5: Run the Docker Container
+docker run -it addition-java
+
+Step 6 (Optional): Push to Docker Hub
+If you want to make your image publicly available:
+docker tag addition-java <your-dockerhub-username>/addition-java:latest
+docker push <your-dockerhub-username>/addition-java:latest
+Then anyone can run it using:
+docker run -it <your-dockerhub-username>/addition-java:latest
+
+docker run -it <your-dockerhub-username>/addition-java:latest
