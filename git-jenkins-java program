@@ -1,0 +1,36 @@
+1.sudo apt install openjdk-17-jdk -y
+
+2.javac -version
+
+3.sudo systemctl restart jenkins
+  sudo systemctl status jenkins
+
+#helloworld-java repo in github 
+ HelloWorld.java file in it
+ public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World from Jenkins!");
+    }
+}
+
+
+#in jenkins
+
+4.install git plugin
+
+5.create new item -> HelloWorldJava
+
+6.Configure GitHub Repo in Jenkins
+  In job configuration:
+  Under Source Code Management, select Git
+  In Repository URL, paste your GitHub repo link (example):
+   https://github.com/your-username/helloworld-java.git
+
+7.Add Build Step
+  Scroll to Build → Add build step → Execute shell
+  echo "Building and running HelloWorld.java..."
+  javac HelloWorld.java
+  java HelloWorld
+  echo "✅ Build and run successful"
+
+8. save -> build now 
