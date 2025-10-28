@@ -1,0 +1,44 @@
+Step 1: Update Your System
+sudo apt update && sudo apt upgrade -y
+
+Step 2: Uninstall Old Versions (if any)
+sudo apt remove docker docker-engine docker.io containerd runc
+
+Step 3: Install Required Dependencies
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+
+Step 4: Add Docker’s Official GPG Key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+Step 5: Add the Docker Repository
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+Step 6: Update Package Index (again)
+sudo apt update
+
+Step 7: Install Docker Engine, CLI, and Containerd
+sudo apt install docker-ce docker-ce-cli containerd.io -y
+
+Step 8: Verify Docker Installation
+docker --version
+
+Step 9: Enable and Start Docker
+sudo systemctl enable docker
+sudo systemctl start docker
+(Press q to exit the status screen)
+
+Step 11 (Optional): Run Docker Without sudo
+
+By default, Docker commands require sudo.
+To run without it:
+
+sudo usermod -aG docker $USER
+Then log out and log back in, or run:
+newgrp docker
+
+Now test:
+docker ps
