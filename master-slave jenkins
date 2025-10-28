@@ -1,0 +1,24 @@
+# create two ec2 instance install jenkins on both 
+#start jenkins on master
+#create node
+
+
+pwd
+find / -type f -name java
+#node properties
+
+#manage jenkins->security
+ fixed 50000
+
+# on master -> sudo ufw allow 50000/tcp
+# go to node build now 
+# run thos ecommands 
+
+
+# create new job item 
+
+ echo "hello to master slave architecture injenkins "
+ click build now
+
+ goto the node (agent2)
+
