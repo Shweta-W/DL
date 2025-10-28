@@ -1,0 +1,31 @@
+## connect to jenkins 
+
+1.pwd
+2.nano factorial.py
+
+ factorial.py
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+n = 5  # You can change this number
+print(f"Factorial of {n} is {factorial(n)}")
+
+3.sudo cp /home/ubuntu/factorial.py /var/lib/jenkins/workspace/factorialjob/
+
+# go to jenkins dashboard
+
+4.Create Jenkins job
+  Click “New Item”
+  Enter name → factorialjob
+  Select “Freestyle project” → click OK
+
+5.Add build step
+  Scroll down to the Build section →
+  Click Add build step → Execute shell
+  In the command box, type:
+  python3 factorial.py
+
+6.build now -> console output
