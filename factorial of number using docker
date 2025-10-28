@@ -1,0 +1,64 @@
+Step 1: Create a Project Folder
+mkdir java-docker-factorial
+cd java-docker-factorial
+
+Step 2: Create the Java Program
+nano Factorial.java
+Paste this code and save it:
+....
+import java.util.Scanner;
+
+public class Factorial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        long fact = 1;
+
+        for (int i = 1; i <= num; i++) {
+            fact *= i;
+        }
+
+        System.out.println("Factorial of " + num + " is: " + fact);
+        sc.close();
+    }
+}
+....
+
+Step 3: Create the Dockerfile
+nano Dockerfile
+.....
+Paste this content:
+
+# Step 1: Use an official OpenJDK image as the base
+FROM openjdk:17-jdk-slim
+
+# Step 2: Set the working directory inside the container
+WORKDIR /app
+
+# Step 3: Copy the Java file into the container
+COPY Factorial.java /app
+
+# Step 4: Compile the Java program
+RUN javac Factorial.java
+
+# Step 5: Run the program
+CMD ["java", "Factorial"]
+
+.....
+Save and exit.
+
+Step 4: Build the Docker Image
+docker build -t factorial-java .
+
+Step 5: Run the Docker Container
+docker run -it factorial-java
+
+Step 6 (Optional): Push to Docker Hub
+If you want to deploy/share it publicly:
+docker tag factorial-java <your-username>/factorial-java:latest
+docker push <your-username>/factorial-java:latest
+
+Then anyone can run it using:
+
+docker run -it <your-username>/factorial-java:latest
