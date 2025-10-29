@@ -1,0 +1,20 @@
+docker pull nginx:latest
+
+docker images
+
+docker run -d --name mynginx -p 5555:80 nginx:latest
+
+sudo nano index.html
+'''''
+<html>
+<body>
+<h1>Hello From shweta</h1>
+</body>
+</html>
+''''''
+docker cp index.html mynginx:/usr/share/nginx/html/index.html
+# go to http://localhost:5555
+
+Step 5: Stop and Remove Container (Optional)
+docker stop mynginx
+docker rm mynginx
