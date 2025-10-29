@@ -1,0 +1,8 @@
+Update your system packages
+sudo apt update
+
+Step 2: Install Git
+sudo apt install git -y
+
+Step 3: Verify Git installation
+git --version
