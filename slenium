@@ -1,0 +1,93 @@
+python3 -m venv venv
+source venv/bin/activate
+pip install selenium webdriver-manager
+# create file.py
+# copy code 
+python3 file.py
+
+
+## FORM FILLING
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+# Initialize Chrome driver
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# Step 1: Open form page
+driver.get("https://practicetestautomation.com/practice-test-login/")
+driver.maximize_window()
+# Step 2: Find input fields by name
+username = driver.find_element(By.NAME, "username")
+password = driver.find_element(By.NAME, "password")
+# Step 3: Clear and fill the form fields
+username.clear()
+username.send_keys("student")
+password.clear()
+password.send_keys("Password123")
+# Step 4: Scroll and click Submit button
+time.sleep(5)
+driver.find_element(By.ID, "submit").click()
+time.sleep(5)
+print("Form submitted successfully!")
+print("Redirected URL:", driver.current_url)
+# Step 6: Close browser
+driver.quit() 
+
+
+## YOUTUBE 
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+# Initialize Chrome driver
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# Step 1: Open form page
+driver.get("https://youtube.com/")
+driver.maximize_window()
+# Step 2: Find input fields by name
+search_query = driver.find_element(By.NAME, "search_query")
+# Step 3: Clear and fill the form fields
+search_query.clear()
+search_query.send_keys("Selenium with Python")
+# Step 4: Scroll and click Submit button
+time.sleep(3)
+driver.find_element(By.CSS_SELECTOR, "[aria-label='Search']").click()
+time.sleep(3)
+print("Search query submitted successfully!")
+print("Redirected URL:", driver.current_url)
+# Step 6: Close browser
+driver.quit() 
+
+
+## WIKIPEDIA SEARCH
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+# Initialize Chrome driver
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# Step 1: Open form page
+driver.get("https://wikipedia.org/")
+driver.maximize_window()
+# Step 2: Find input fields by name
+search_query = driver.find_element(By.NAME, "search")
+# Step 3: Clear and fill the form fields
+search_query.clear()
+search_query.send_keys("Python")
+# Step 4: Scroll and click Submit button
+time.sleep(3)
+driver.find_element(By.CLASS_NAME, "pure-button-primary-progressive").click()
+time.sleep(3)
+print("Search query submitted successfully!")
+print("Redirected URL:", driver.current_url)
+# Step 6: Close browser
+driver.quit() 
+
