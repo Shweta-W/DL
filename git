@@ -1,0 +1,72 @@
+sudo su
+apt update
+apt-get install git
+git --version
+
+git config --global user.name "Shweta-W"
+git config --global user.email 23104183@apsit.edu.in
+git config --list
+
+#goto github sign in craete repo 
+#come back to terminal 
+git init
+ls -altr
+git clone https://github.com/sujataoak799/gitdemo11072025.git
+ls -ltr
+# cd to the repo (gitdemo11072025)
+ls
+cat README.md
+gedit factorial.py
+ ....
+# factorial of given number
+def factorial(n):
+ if n < 0:
+ return 0
+ elif n == 0 or n == 1:
+ return 1
+ else:
+ fact = 1
+ while(n > 1):
+ fact *= n
+ n -= 1
+ return fact
+# Driver Code
+num = 5
+print("Factorial of",num,"is",
+factorial(num))
+.......
+
+git status
+git add factorial.py
+git status
+git commit -m "first file added"
+git status
+git push origin main
+
+# It says support for password authentication was removed on August 13, 2021.
+So we need a new kind of method:
+Goto your Github Account→User Profile→Settings→Developer
+Settings→Personal Access Token→Token(classic)→ Generate New
+token→Generate New Token(Classic)
+
+git remote set-url origin https://tokenhere@github.com/user_name/repo_name
+git push origin main
+
+# create a file in github repo 
+# come back to terminal 
+ls -ltr
+git pull
+ls -ltr
+cat mynewfile
+git log
+git log --oneline  (To Print list of all commits)
+git commit <commitid>
+gedit mynewfile 
+# change there some line 
+git status
+git add .
+git status
+git commit -m "Added info on branching"
+git log --oneline
+git diff <latest commit id > <commit id >
+git revert <second commit id >
