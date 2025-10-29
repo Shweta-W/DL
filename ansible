@@ -1,0 +1,89 @@
+sudo apt-get update
+sudo apt install ansible
+sudo apt install -y python3 python3-apt sshpass ufw curl
+
+hostname -I (take your ip)
+
+S1: create new folder 
+   # mkdir ansible-lab
+   # cd ansible-lab
+   
+S2: create 3 files
+   #deploy.yml ->Playbook (main automation file)
+   #index.html -> Web page to deploy
+   #hosts.ini -> Inventory file (list of servers where Ansible will deploy)
+
+
+
+# deploy.yml
+.......
+- name: Deploy Web Application using Ansible
+  hosts: webservers
+  become: yes
+
+  tasks:
+    # Install Nginx
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    # Start and enable Nginx service
+    - name: Start and enable Nginx service
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+    # Copy index.html to the web server
+    - name: Copy index.html to web server
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+    # Ensure firewall allows HTTP traffic
+    - name: Ensure firewall allows HTTP traffic
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp
+
+    # Ensure the firewall is enabled (if it's not already enabled)
+    - name: Ensure ufw is enabled
+      ufw:
+        state: enabled
+        logging: yes
+........
+
+#hosts.ini
+....
+[webservers]
+YOUR IP ansible_connection=local
+...
+
+
+#index.html
+.....
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to My Ansible Deployed Site</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+<h1> Deployment Successful!</h1>
+<p>This web page was deployed using Ansible Playbook by Prof Sujata Oak.</p>
+</body>
+</html>
+......
+
+ansible-playbook -i hosts.ini deploy.yml
+
+## goto http://YOUR_IP
+
+
+Discussion
+×
