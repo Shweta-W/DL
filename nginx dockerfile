@@ -1,0 +1,29 @@
+
+
+mkdir nginx-webapp
+cd nginx-webapp
+
+sudo nano index.html
+....
+<html>
+<body>
+<h1>Hello From Aadesh</h1>
+</body>
+</html>
+....
+
+sudo nano Dockerfile
+.......
+# Use the official nginx base image
+FROM nginx:latest
+
+# Copy the HTML file into nginx’s web directory
+COPY index.html /usr/share/nginx/html/index.html
+
+# Expose port 80 for web traffic
+EXPOSE 80
+....
+
+docker build -t mynginxapp .
+docker run -d -p 5556:80 --name nginx-app mynginxapp
+# goto http://localhost:5556
