@@ -19,8 +19,8 @@
 
 4.Build 
   echo "Building and running HelloWorld.java..."
-javac HelloWorld.java
-java HelloWorld
-echo "✅ Build and run successful"
+  javac HelloWorld.java
+  java HelloWorld
+  echo "✅ Build and run successful"
 
 5. build now 
