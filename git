@@ -70,3 +70,44 @@ git commit -m "Added info on branching"
 git log --oneline
 git diff <latest commit id > <commit id >
 git revert <second commit id >
+
+
+
+
+
+# goto your gir remote directory 
+ls
+git branch
+git branch featureA
+git branch
+git checkout featureA
+touch add.py
+gedit add.py
+ .....
+a=5
+b=3
+sum=a+b
+print("the sum is :",sum)
+cat add.py
+git status
+git add add.py
+git status
+git commit -m "added add.py "
+git log
+git push --set-upstream origin featureA
+# in local repo in feature branch create 3 files 
+touch featureA-1
+touch featureA-2
+touch featureA-3
+git status
+git add .
+git commit -m "added 3 files in featureA branch"
+git push -u origin featureA
+# ON GITHUN CREATE PULL REQUEST
+   merging feature a to main branch
+merge pull request 
+confirm merge 
+
+
+git branch -d featureA
+git push --delete origin featureA
