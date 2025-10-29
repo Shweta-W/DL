@@ -1,7 +1,6 @@
 # create two ec2 instance install jenkins on both 
 #start jenkins on master
-#create node
-
+#create node in jenkins
 
 pwd
 find / -type f -name java
@@ -12,8 +11,7 @@ find / -type f -name java
 
 # on master -> sudo ufw allow 50000/tcp
 # go to node build now 
-# run thos ecommands 
-
+# run those commands whihc appear for error removal
 
 # create new job item 
 
