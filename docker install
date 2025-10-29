@@ -31,14 +31,6 @@ sudo systemctl enable docker
 sudo systemctl start docker
 (Press q to exit the status screen)
 
-Step 11 (Optional): Run Docker Without sudo
-
-By default, Docker commands require sudo.
-To run without it:
-
-sudo usermod -aG docker $USER
-Then log out and log back in, or run:
-newgrp docker
 
 Now test:
 docker ps
